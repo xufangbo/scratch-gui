@@ -83,13 +83,20 @@ describe('blocks example', () => {
         await clickText('Control');
         await clickText('Sensing');
         await clickText('Operators');
+    });
+
+    test('Create variable', async () => {
+        await loadUri(`${uri}`);
         await clickText('Variables');
-        await new Promise(resolve => setTimeout(resolve, 1000)); // Wait for scroll animation
+        await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for scroll animation
         await clickText('Make a Variable');
+        // find xpath twice as a precaution against race condition
         let el = await findByXpath("//input[@name='New variable name:']");
+        el = await findByXpath("//input[@name='New variable name:']");
         await el.sendKeys('score');
         await clickButton('OK');
         await clickText('Make a Variable');
+        el = await findByXpath("//input[@name='New variable name:']");
         el = await findByXpath("//input[@name='New variable name:']");
         await el.sendKeys('second variable');
         await clickButton('OK');
