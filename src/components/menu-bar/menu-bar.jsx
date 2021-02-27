@@ -336,107 +336,37 @@ class MenuBar extends React.Component {
         };
     }
     render () {
-        const saveNowMessage = (
-            <FormattedMessage
-                defaultMessage="Save now"
-                description="Menu bar item for saving now"
-                id="gui.menuBar.saveNow"
-            />
-        );
-        const createCopyMessage = (
-            <FormattedMessage
-                defaultMessage="Save as a copy"
-                description="Menu bar item for saving as a copy"
-                id="gui.menuBar.saveAsCopy"
-            />
-        );
-        const remixMessage = (
-            <FormattedMessage
-                defaultMessage="Remix"
-                description="Menu bar item for remixing"
-                id="gui.menuBar.remix"
-            />
-        );
-        const newProjectMessage = (
-            <FormattedMessage
-                defaultMessage="New"
-                description="Menu bar item for creating a new project"
-                id="gui.menuBar.new"
-            />
-        );
+        const saveNowMessage = ( <FormattedMessage defaultMessage="Save now"  description="Menu bar item for saving now" id="gui.menuBar.saveNow" /> );
+        const createCopyMessage = ( <FormattedMessage defaultMessage="Save as a copy" description="Menu bar item for saving as a copy" id="gui.menuBar.saveAsCopy" /> );
+        const remixMessage = (<FormattedMessage defaultMessage="Remix" description="Menu bar item for remixing" id="gui.menuBar.remix" /> );
+        const newProjectMessage = ( <FormattedMessage defaultMessage="New" description="Menu bar item for creating a new project" id="gui.menuBar.new" /> );
         const remixButton = (
-            <Button
-                className={classNames(
-                    styles.menuBarButton,
-                    styles.remixButton
-                )}
-                iconClassName={styles.remixButtonIcon}
-                iconSrc={remixIcon}
-                onClick={this.handleClickRemix}
-            >
+            <Button className={classNames( styles.menuBarButton, styles.remixButton )} iconClassName={styles.remixButtonIcon} iconSrc={remixIcon} onClick={this.handleClickRemix} >
                 {remixMessage}
-            </Button>
-        );
+            </Button>);
         // Show the About button only if we have a handler for it (like in the desktop app)
         const aboutButton = this.buildAboutMenu(this.props.onClickAbout);
         return (
-            <Box
-                className={classNames(
-                    this.props.className,
-                    styles.menuBar
-                )}
-            >
+            <Box className={classNames( this.props.className, styles.menuBar )} >
                 <div className={styles.mainMenu}>
                     <div className={styles.fileGroup}>
                         <div className={classNames(styles.menuBarItem)}>
-                            <img
-                                alt="Scratch"
-                                className={classNames(styles.scratchLogo, {
-                                    [styles.clickable]: typeof this.props.onClickLogo !== 'undefined'
-                                })}
-                                draggable={false}
-                                src={this.props.logo}
-                                onClick={this.props.onClickLogo}
-                            />
+                            <img alt="Scratch" className={classNames(styles.scratchLogo, { [styles.clickable]: typeof this.props.onClickLogo !== 'undefined' })} draggable={false} src={this.props.logo} onClick={this.props.onClickLogo} />
                         </div>
-                        {(this.props.canChangeLanguage) && (<div
-                            className={classNames(styles.menuBarItem, styles.hoverable, styles.languageMenu)}
-                        >
+                        {(this.props.canChangeLanguage) && (
+                        <div className={classNames(styles.menuBarItem, styles.hoverable, styles.languageMenu)}>
                             <div>
-                                <img
-                                    className={styles.languageIcon}
-                                    src={languageIcon}
-                                />
-                                <img
-                                    className={styles.languageCaret}
-                                    src={dropdownCaret}
-                                />
+                                <img className={styles.languageIcon} src={languageIcon} />
+                                <img className={styles.languageCaret} src={dropdownCaret} />
                             </div>
                             <LanguageSelector label={this.props.intl.formatMessage(ariaMessages.language)} />
                         </div>)}
                         {(this.props.canManageFiles) && (
-                            <div
-                                className={classNames(styles.menuBarItem, styles.hoverable, {
-                                    [styles.active]: this.props.fileMenuOpen
-                                })}
-                                onMouseUp={this.props.onClickFile}
-                            >
-                                <FormattedMessage
-                                    defaultMessage="File"
-                                    description="Text for file dropdown menu"
-                                    id="gui.menuBar.file"
-                                />
-                                <MenuBarMenu
-                                    className={classNames(styles.menuBarMenu)}
-                                    open={this.props.fileMenuOpen}
-                                    place={this.props.isRtl ? 'left' : 'right'}
-                                    onRequestClose={this.props.onRequestCloseFile}
-                                >
+                            <div  className={classNames(styles.menuBarItem, styles.hoverable, { [styles.active]: this.props.fileMenuOpen })} onMouseUp={this.props.onClickFile} >
+                                <FormattedMessage defaultMessage="File" description="Text for file dropdown menu" id="gui.menuBar.file" />
+                                <MenuBarMenu className={classNames(styles.menuBarMenu)} open={this.props.fileMenuOpen} place={this.props.isRtl ? 'left' : 'right'} onRequestClose={this.props.onRequestCloseFile} >
                                     <MenuSection>
-                                        <MenuItem
-                                            isRtl={this.props.isRtl}
-                                            onClick={this.handleClickNew}
-                                        >
+                                        <MenuItem isRtl={this.props.isRtl} onClick={this.handleClickNew} >
                                             {newProjectMessage}
                                         </MenuItem>
                                     </MenuSection>
@@ -702,43 +632,18 @@ class MenuBar extends React.Component {
                         // ******** no login session is available, so don't show login stuff
                         <React.Fragment>
                             {this.props.showComingSoon ? (
-                                <React.Fragment>
-                                    <MenuBarItemTooltip id="mystuff">
-                                        <div
-                                            className={classNames(
-                                                styles.menuBarItem,
-                                                styles.hoverable,
-                                                styles.mystuffButton
-                                            )}
-                                        >
-                                            <img
-                                                className={styles.mystuffIcon}
-                                                src={mystuffIcon}
-                                            />
+                                <React.Fragment>                                   
+                                    <MenuBarItemTooltip id="mystuff">  {/* s. 文件夹图标 */}
+                                        <div className={classNames( styles.menuBarItem, styles.hoverable, styles.mystuffButton )} >
+                                            <img className={styles.mystuffIcon} src={mystuffIcon} />
                                         </div>
-                                    </MenuBarItemTooltip>
-                                    <MenuBarItemTooltip
-                                        id="account-nav"
-                                        place={this.props.isRtl ? 'right' : 'left'}
-                                    >
-                                        <div
-                                            className={classNames(
-                                                styles.menuBarItem,
-                                                styles.hoverable,
-                                                styles.accountNavMenu
-                                            )}
-                                        >
-                                            <img
-                                                className={styles.profileIcon}
-                                                src={profileIcon}
-                                            />
-                                            <span>
-                                                {'scratch-cat'}
-                                            </span>
-                                            <img
-                                                className={styles.dropdownCaretIcon}
-                                                src={dropdownCaret}
-                                            />
+                                    </MenuBarItemTooltip>  
+
+                                    <MenuBarItemTooltip id="account-nav" place={this.props.isRtl ? 'right' : 'left'} >
+                                        <div className={classNames( styles.menuBarItem, styles.hoverable, styles.accountNavMenu )} >  {/* s. 小猫图标 */}                                           
+                                            <img className={styles.profileIcon} src={profileIcon} />                                            
+                                            <span>  {'scratch-cat'} </span>{/* 登录名显示为scratch-cat */}                                          
+                                            <img  className={styles.dropdownCaretIcon}  src={dropdownCaret} />  {/* 下拉三角图片 */}
                                         </div>
                                     </MenuBarItemTooltip>
                                 </React.Fragment>
