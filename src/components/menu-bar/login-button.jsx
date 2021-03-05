@@ -18,7 +18,7 @@ LoginButton.propTypes = {
 };
 
 LoginButton.defaultProps = {
-    onClick: () => {window.alert("请登录");}
+    onClick: () => {window.alert("编程精灵的登录正在开发中");}
 };
 
 export default LoginButton;

@@ -73,7 +73,7 @@ import dropdownCaret from './dropdown-caret.svg';
 import languageIcon from '../language-selector/language-icon.svg';
 import aboutIcon from './icon--about.svg';
 
-import scratchLogo from './scratch-logo.svg';
+import scratchLogo from './cs-logo.png';//codingsprite
 
 import sharedMessages from '../../lib/shared-messages';
 import LoginButton from "./login-button.jsx";
