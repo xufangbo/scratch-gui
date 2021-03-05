@@ -76,6 +76,7 @@ import aboutIcon from './icon--about.svg';
 import scratchLogo from './scratch-logo.svg';
 
 import sharedMessages from '../../lib/shared-messages';
+import LoginButton from "./login-button.jsx";
 
 const ariaMessages = defineMessages({
     language: {
@@ -649,7 +650,7 @@ class MenuBar extends React.Component {
                                     </MenuBarItemTooltip>
                                 </React.Fragment>
                             // ) : []}
-                            ) : <button >Login</button>}
+                            ) : <LoginButton className={styles.menuBarButton} />}
                         </React.Fragment>
                     )}
                 </div>

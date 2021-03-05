@@ -18,7 +18,10 @@ const initialState = {
 const getIsLogined = (loginState) => loginState === UserState.LOGINED;
 
 const reducer = function (state, action) {
+    
     if (typeof state === "undefined") state = initialState;
+
+    return state;
 };
 
 export {
