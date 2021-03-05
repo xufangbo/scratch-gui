@@ -631,7 +631,8 @@ class MenuBar extends React.Component {
                     ) : (
                         // ******** no login session is available, so don't show login stuff
                         <React.Fragment>
-                            {this.props.showComingSoon ? (
+                            {/* {this.props.showComingSoon ? ( */}
+                            {this.props.loginState  ? (
                                 <React.Fragment>                                   
                                     <MenuBarItemTooltip id="mystuff">  {/* s. 文件夹图标 */}
                                         <div className={classNames( styles.menuBarItem, styles.hoverable, styles.mystuffButton )} >
@@ -647,7 +648,8 @@ class MenuBar extends React.Component {
                                         </div>
                                     </MenuBarItemTooltip>
                                 </React.Fragment>
-                            ) : []}
+                            // ) : []}
+                            ) : <button >Login</button>}
                         </React.Fragment>
                     )}
                 </div>
